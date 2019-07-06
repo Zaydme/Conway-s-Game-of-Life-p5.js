@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+  </head>
+  <body>
+    <div class="buttons">
+      <button onclick="noLoop();isLoop= false">pause</button>
+      <button onclick="loop();isLoop= true">resume</button>
+      <button onclick="noLoop();isLoop= true;redraw();isLoop= false">step+</button>
+      <button onclick="initialGen();redraw();loop();isLoop= true">random</button>
+    </div>
+    <script src="sketch.js"></script>
+  </body>
+<style>
+.buttons {
+  margin-left: 20px;
+  position: absolute;
+}
+</style>
+</html>
