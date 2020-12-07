@@ -49,6 +49,15 @@ function initialGen() {
   }
 }
 
+function clearCells() {
+    for (let i = 0; i < COLUMNS; i++) {
+        for (let j = 0; j < ROWS; j++) {
+            cells[i][j][0] = false;
+            cells[i][j][1] = 0;
+        }
+    }
+}
+
 function lifeIsGoingOn() {
   for (let i = 0; i < COLUMNS; i++) {
     for (let j = 0; j < ROWS; j++) {
@@ -82,14 +91,5 @@ function mouseClicked() {
   const Mcolumns = Math.floor(mouseX / COLUMN_WIDTH);
   const Mrows = Math.floor(mouseY / COLUMN_WIDTH);
   cells[Mcolumns][Mrows][0] = !cells[Mcolumns][Mrows][0];
-  if (cells[Mcolumns][Mrows][0]) fill(0);
-  else fill(255);
-  stroke(0);
-  rect(
-    Mcolumns * COLUMN_WIDTH,
-    Mrows * COLUMN_WIDTH,
-    COLUMN_WIDTH - 1,
-    COLUMN_WIDTH - 1,
-  );
   if (!isLoop) redraw();
 }
