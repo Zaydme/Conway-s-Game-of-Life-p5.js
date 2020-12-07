@@ -5,17 +5,36 @@
   </head>
   <body>
     <div class="buttons">
-      <button onclick="noLoop();isLoop= false">pause</button>
-      <button onclick="loop();isLoop= true">resume</button>
-      <button onclick="noLoop();isLoop= true;redraw();isLoop= false">step+</button>
-      <button onclick="initialGen();redraw();loop();isLoop= true">random</button>
+      <button onclick="noLoop();isLoop= false;setStatus()">pause</button>
+      <button onclick="loop();isLoop= true;setStatus()">resume</button>
+      <button
+        onclick="noLoop();isLoop= true;redraw();isLoop= false;setStatus()"
+      >
+        step+
+      </button>
+      <button onclick="initialGen();redraw();loop();isLoop= true;setStatus()">
+        random
+      </button>
+      <span id="status"> </span>
     </div>
     <script src="sketch.js"></script>
   </body>
-<style>
-.buttons {
-  margin-left: 20px;
-  position: absolute;
-}
-</style>
+  <style>
+    .buttons {
+      margin-left: 20px;
+      position: absolute;
+    }
+  </style>
+  <script>
+    document.body.style.margin = 0;
+    function setStatus() {
+      document.getElementById("status").innerHTML = isLoop
+        ? "Running"
+        : "Paused";
+      document.getElementById("status").style.backgroundColor = isLoop
+        ? "rgb(72, 250, 2)"
+        : "red";
+    }
+    setStatus();
+  </script>
 </html>
